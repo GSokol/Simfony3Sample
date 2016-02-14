@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Северсталь{% endblock %}</title>
+    {% block stylesheets %}
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css" media="screen">
+      <link rel="stylesheet" href="/static/css/jquery-ui.min.css" media="screen">
+      <link rel="stylesheet" href="/static/css/main.css" media="screen">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block scripts %}
+      <script type="text/javascript" src="/static/js/jquery-2.2.0.min.js"></script>
+      <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/static/js/underscore-min.js"></script>
+    {% endblock %}
+  </head>
+  <body>
+    <div class="wrap">
+      {% block header %}
+        <div class="Header">
+          <div class="LogoLink">
+            <div class="Logo" style="background: url(/static/img/logo_new_rus.gif) no-repeat;"></div>
+          </div>
+          <div class="RightHeader">
+            {% block right_header %}{% endblock %}
+          </div>
+        </div>
+      {% endblock %}
+      <div class="{% block container_class %}container{% endblock %}">
+        {% block container_body %}{% endblock %}
+      </div>
+      <!-- Maybe it's batter to put some header here -->
+    </div>
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+  </body>
+</html>

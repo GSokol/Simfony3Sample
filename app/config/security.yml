@@ -1,0 +1,41 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+  # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+  providers:
+    in_memory:
+      memory:
+        users:
+          ivanov:
+            password: ivanov_pass
+            roles: 'ROLE_COMMON'
+          petrov:
+            password: petrov_pass
+            roles: 'ROLE_ADVANCED'
+
+  encoders:
+    Symfony\Component\Security\Core\User\User: plaintext
+
+  role_hierarchy:
+    ROLE_ADVANCED: ROLE_COMMON
+
+  firewalls:
+    # disables authentication for assets and the profiler, adapt it according to your needs
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    login:
+      pattern: ^/login$
+      anonymous: ~
+
+    main:
+      pattern: ^/
+      form_login:
+        csrf_token_generator: security.csrf.token_manager
+        login_path: /login
+        check_path: /login/check
+      logout:
+        path: /logout
+        target: /login

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block scripts %}{{ parent() }}
+  <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
+{% endblock %}
+
+{% block right_header %}
+{{ parent() }}
+<button class="btn btn-default ui-state-default" onclick="document.location.href='/logout'">
+  <span class="ui-icon ui-icon-unlocked" style="display:inline-block"></span>Выход
+</button>
+{% endblock %}
+
+{% block container_class %}{{ parent() }} news{% endblock %}
+
+{% block container_body %}
+  <div class="LeftPrat">
+    <div class="box filterBox">
+      <div class="boxHeader">
+        <p>Фильтры</p>
+      </div>
+      <form>
+      <div class="containerText filters"></div>
+      <div class="containerText last">
+        <button type="submit" class="btn btn-default">Обновить</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="Center">
+    <div class="BoxInfo" id="_y_map"></div>
+  </div>
+{% endblock %}

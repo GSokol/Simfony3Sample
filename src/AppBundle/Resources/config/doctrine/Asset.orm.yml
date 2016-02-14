@@ -1,0 +1,26 @@
+AppBundle\Entity\Asset:
+    type: entity
+    table: asset
+    repositoryClass: AppBundle\Repository\AssetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 128
+        turnover:
+            type: integer
+        staff:
+            type: integer
+        address:
+            type: text
+        lat:
+            type: float
+        long:
+            type: float
+            column: lng
+    lifecycleCallbacks: {  }

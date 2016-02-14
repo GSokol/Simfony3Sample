@@ -1,0 +1,33 @@
+login_show:
+  path:  /login
+  methods: [GET]
+  defaults: { _controller: AppBundle:Login:show }
+
+login_check:
+  path: /login/check
+  methods: [POST]
+
+logout:
+  path: /logout
+  methods: [GET]
+
+homepage:
+  path: /
+  methods: [GET]
+  defaults: { _controller: AppBundle:Default:index }
+
+asset_filters:
+  path: /assets/filters
+  defaults: {_controller: AppBundle:Asset:getFilter }
+  methods: [GET]
+
+assets_finf:
+  path: /assets/find
+  defaults: { _controller: AppBundle:Asset:find }
+
+assets:
+  path: /assets/{id}
+  defaults: { _controller: AppBundle:Asset:get }
+  methods: [GET]
+  requirements:
+    id: \d+
